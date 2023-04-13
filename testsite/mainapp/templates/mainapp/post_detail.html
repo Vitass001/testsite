@@ -1,0 +1,440 @@
+{%  load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'mainapp/css/main.css' %}">
+
+
+
+
+<!--<header>-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--&lt;!&ndash;      <a class="navbar-brand" href="#">Моя сторінка</a>&ndash;&gt;-->
+<!--      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--      </button>-->
+<!--      <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--        <ul class="navbar-nav">-->
+<!--          <li class="nav-item active">-->
+<!--            <a class="nav-link" href="/">Home </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'all_posts' %}">Posts</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'calculator' %}">Calculator</a>-->
+<!--          </li>-->
+<!--            <li class="nav-item">-->
+<!--            <a class="nav-link" href="edit/">Post Edit</a>-->
+<!--          </li>-->
+<!--            <li class="nav-item">-->
+<!--            <a class="nav-link" href="delete/">Post Delete</a>-->
+<!--          </li>-->
+
+
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'logout' %}">Logout</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--		</ul>-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
+
+<!--<button><a href="edit/">Edit Post</a></button>-->
+<!--<button><a href="delete/">Delet Post</a></button>-->
+<!--<button><a href="/posts/">View Post</a></button>-->
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'calculator' %}">Calculator</a>
+        </li>
+
+<!--       <li class="nav-item">-->
+<!--          <a class="nav-link" href="edit/">Post Edit</a>-->
+<!--        </li>-->
+<!--       <li class="nav-item">-->
+<!--          <a class="nav-link" href="delete/">Post Delete</a>-->
+<!--        </li>-->
+
+       <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        FWADMIN
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+          <h2>Camera Name: {{ post.Legal_Entity }}</h2>
+          <h2>Company: {{ post.Company }}</h2>
+          <h2>Property Name: {{ post.Property_Name }}</h2>
+          <h2>Town  Postcode: {{ post.Town_Postcode }}</h2>
+
+            <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit/" role="button">Edit</a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        INSTALER ON SITE
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+
+
+
+
+          <h2>Installer Company: <span style="color:blue">{{ post.Installer_Company }}</span></h2>
+          <h2>Installer email: <span style="color:blue">{{ post.Installer_email }}</span></h2>
+          <h2>Install date: <span style="color:blue">{{ post.Install_date }}</span></h2>
+          <h2>Door/entrance width: <span style="color:blue">{{ post.Door_entrance_width }}</span></h2>
+          <h2>Distance from door: <span style="color:blue">{{ post.Distance_from_door }}</span></h2>
+          <h2>Height: <span style="color:blue">{{ post.Height }}</span></h2>
+          <h2>Angle to face (Degrees): <span style="color:blue">{{ post.Angle_to_face_Degrees }}</span></h2>
+          <h2>Pixels per face: <span style="color:blue">{{ post.Pixels_per_face }}</span></h2>
+          <h2>Video on teams: <span style="color:blue">{{ post.Video_on_teams }}</span></h2>
+          <h2>Facebox id: <span style="color:blue">{{ post.Facebox_id }}</span></h2>
+          <h2>Kasa login: <span style="color:blue">{{ post.Kasa_login }}</span></h2>
+          <h2>Router Serial No: <span style="color:blue">{{ post.Router_Serial_No }}</span></h2>
+          <h2>Phone Model: <span style="color:blue">{{ post.Phone_Model }}</span></h2>
+          <h2>Phone Serial No: <span style="color:blue">{{ post.Phone_Serial_No }}</span></h2>
+
+
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit1/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        CAMERA SETTINGS FOR INSTALLERS
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+        <h2>Vivotek cam updated: <span style="color:blue">{{ post.Vivotek_cam_updated }}</span></h2>
+        <h2>Lumen or candle: <span style="color:blue">{{ post.Lumen_or_candle }}</span></h2>
+        <h2>Auto Camera Name: <span style="color:blue">{{ post.Auto_Camera_Name }}</span></h2>
+        <h2>Input Camera Name Into Camera: <span style="color:blue">{{ post.Input_Camera_Name_Into_Camera }}</span></h2>
+        <h2>Aspect: <span style="color:blue">{{ post.Aspect }}</span></h2>
+        <h2>Door type: <span style="color:blue">{{ post.Door_type }}</span></h2>
+        <h2>Describe aspect: <span style="color:blue">{{ post.Describe_aspect }}</span></h2>
+        <h2>Camera time: <span style="color:blue">{{ post.Camera_time }}</span></h2>
+        <h2>Bitrate: <span style="color:blue">{{ post.Bitrate }}</span></h2>
+        <h2>Video quality: <span style="color:blue">{{ post.Video_quality }}</span></h2>
+        <h2>Zoom to door and preset: <span style="color:blue">{{ post.Zoom_to_door_and_preset }}</span></h2>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit2/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        FINAL INSTALL CHECKS
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+      <div class="accordion-body">
+
+        <h2>Horiz mfs from detection: <span style="color:blue">{{ post.Horiz_mfs_from_detection }}</span></h2>
+        <h2>Horiz mfs from safr: <span style="color:blue">{{ post.Horiz_mfs_from_safr }}</span></h2>
+        <h2>Are faces detected: <span style="color:blue">{{ post.Are_faces_detected }}</span></h2>
+        <h2>Are alerts working: <span style="color:blue">{{ post.Are_alerts_working }}</span></h2>
+        <h2>Name of store manager: <span style="color:blue">{{ post.Name_of_store_manager }}</span></h2>
+        <h2>Is web login: <span style="color:blue">{{ post.Is_web_login }}</span></h2>
+        <h2>User login app: <span style="color:blue">{{ post.User_login_app }}</span></h2>
+        <h2>User trained: <span style="color:blue">{{ post.User_trained }}</span></h2>
+        <h2>Name of fw user: <span style="color:blue">{{ post.Name_of_fw_user }}</span></h2>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit3/" role="button">Edit</a>
+          </div>
+       </div>
+    </div>
+  </div>
+
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        PHOTOS ON SITE
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+      <div class="accordion-body">
+        <h3>Camera_Position_Image:
+                {% if post.Camera_Position_Image %}
+
+                <button onclick="openInNewTab('{{ post.Camera_Position_Image.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+                {% endif %}
+            </h3>
+
+
+            <h3>Facebox_Switch_location_image:
+                {% if post.Facebox_Switch_location_image %}
+
+                <button onclick="openInNewTab('{{ post.Facebox_Switch_location_image.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+                {% endif %}
+            </h3>
+            <h3>Router_location_image:
+                {% if post.Router_location_image %}
+
+                <button onclick="openInNewTab('{{ post.Router_location_image.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+                {% endif %}
+
+            </h3>
+            <h3>Image_of_signage_in_doorway_image:
+                {% if post.Image_of_signage_in_doorway_image %}
+
+                <button onclick="openInNewTab('{{ post.Image_of_signage_in_doorway_image.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+                {% endif %}
+            </h3>
+
+            <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit4/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        SAFR INFORMATION
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+      <div class="accordion-body">
+
+        <h2>Safr feed name: <span style="color:blue">{{ post.Safr_feed_name }}</span></h2>
+        <h2>Safr feed site: <span style="color:blue">{{ post.Safr_feed_site }}</span></h2>
+        <h2>Safr feed source: <span style="color:blue">{{ post.Safr_feed_source }}</span></h2>
+        <h2>Rtsp adress: <span style="color:blue">{{ post.Rtsp_adress }}</span></h2>
+        <h2>Safr RMFS: <span style="color:blue">{{ post.Safr_mfs }}</span></h2>
+        <h2>Safr tracker failed: <span style="color:blue">{{ post.Safr_tracker_failed }}</span></h2>
+        <h2>Safr min pose quality: <span style="color:blue">{{ post.Safr_min_pose_quality }}</span></h2>
+        <h2>Safr min backoff: <span style="color:blue">{{ post.Safr_min_backoff }}</span></h2>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit5/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        DAY PARAMETERS
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+      <div class="accordion-body">
+        <h2>Camera serial number: <span style="color:blue">{{ post.Camera_serial_no }}</span></h2>
+        <h2>Name of day profile: <span style="color:blue">{{ post.Name_of_profile_day }}</span></h2>
+        <h2>Time of day profile: <span style="color:blue">{{ post.Time_profile_day }}</span></h2>
+        <h2>White balance (day): <span style="color:blue">{{ post.White_balance_day }}</span></h2>
+        <h2>Brightness (day): <span style="color:blue">{{ post.Brightness_day }}</span></h2>
+        <h2>Saturation (day): <span style="color:blue">{{ post.Saturation_day }}</span></h2>
+        <h2>Sharpness (day): <span style="color:blue">{{ post.Sharpness_day }}</span></h2>
+        <h2>Digital noise (day): <span style="color:blue">{{ post.Digital_noise_day }}</span></h2>
+        <h2>Exposure level (day): <span style="color:blue">{{ post.Exposure_level_day }}</span></h2>
+        <h2>Exposure mode (day): <span style="color:blue">{{ post.Exposure_mode_day }}</span></h2>
+        <h2>Iris (day): <span style="color:blue">{{ post.Iris_day }}</span></h2>
+        <h2>Exposure gain (day): <span style="color:blue">{{ post.Exposure_gain_day }}</span></h2>
+        <h2>Exposure time (day): <span style="color:blue">{{ post.Exposure_time_day }}</span></h2>
+        <h2>WDR Pro (day): <span style="color:blue">{{ post.Wdr_pro_day }}</span></h2>
+        <h2>WDR level (day): <span style="color:blue">{{ post.wdr_level_day }}</span></h2>
+      <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit6/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        DAY PARAMETERS EXTRA 1
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+      <div class="accordion-body">
+
+            <h2>Name of profile one: <span style="color:blue">{{ post.Name_of_profile_one }}</span></h2>
+            <h2>Time of profile one: <span style="color:blue">{{ post.Time_profile_one }}</span></h2>
+            <h2>White balance (one): <span style="color:blue">{{ post.White_balance_one }}</span></h2>
+            <h2>Brightness (one): <span style="color:blue">{{ post.Brightness_one }}</span></h2>
+            <h2>Saturation (one): <span style="color:blue">{{ post.Saturation_one }}</span></h2>
+            <h2>Sharpness (one): <span style="color:blue">{{ post.Sharpness_one }}</span></h2>
+            <h2>Digital noise (one): <span style="color:blue">{{ post.Digital_noise_one }}</span></h2>
+            <h2>Exposure level (one): <span style="color:blue">{{ post.Exposure_level_one }}</span></h2>
+            <h2>Exposure mode (one): <span style="color:blue">{{ post.Exposure_mode_one }}</span></h2>
+            <h2>Iris (one): <span style="color:blue">{{ post.Iris_one }}</span></h2>
+            <h2>Exposure time (one): <span style="color:blue">{{ post.Exposure_time_one }}</span></h2>
+            <h2>Exposure gain (one): <span style="color:blue">{{ post.Exposure_gain_one }}</span></h2>
+            <h2>WDR Pro (one): <span style="color:blue">{{ post.Wdr_pro_one }}</span></h2>
+            <h2>WDR level (one): <span style="color:blue">{{ post.wdr_level_one }}</span></h2>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit7/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        DAY PARAMETERS EXTRA 2
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
+      <div class="accordion-body">
+        <h2>Name of profile two: <span style="color:blue">{{ post.Name_of_profile_two }}</span></h2>
+        <h2>Time of profile two: <span style="color:blue">{{ post.Time_profile_two }}</span></h2>
+        <h2>White balance (two): <span style="color:blue">{{ post.White_balance_two }}</span></h2>
+        <h2>Brightness (two): <span style="color:blue">{{ post.Brightness_two }}</span></h2>
+        <h2>Saturation (two): <span style="color:blue">{{ post.Saturation_two }}</span></h2>
+        <h2>Sharpness (two): <span style="color:blue">{{ post.Sharpness_two }}</span></h2>
+        <h2>Digital noise (two): <span style="color:blue">{{ post.Digital_noise_two }}</span></h2>
+        <h2>Exposure level (two): <span style="color:blue">{{ post.Exposure_level_two }}</span></h2>
+        <h2>Exposure mode (two): <span style="color:blue">{{ post.Exposure_mode_two }}</span></h2>
+        <h2>Iris (two): <span style="color:blue">{{ post.Iris_two }}</span></h2>
+        <h2>Exposure time (two): <span style="color:blue">{{ post.Exposure_time_two }}</span></h2>
+        <h2>Exposure gain (two): <span style="color:blue">{{ post.Exposure_gain_two }}</span></h2>
+        <h2>WDR Pro (two): <span style="color:blue">{{ post.Wdr_pro_two }}</span></h2>
+        <h2>WDR level (two): <span style="color:blue">{{ post.wdr_level_two }}</span></h2>
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit8/" role="button">Edit</a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTen">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        NIGHT PARAMETRS
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
+      <div class="accordion-body">
+            <h2>Name of night profile: <span style="color:blue">{{ post.Name_of_profile_night }}</span></h2>
+            <h2>Time of night profile: <span style="color:blue">{{ post.Time_profile_night }}</span></h2>
+            <h2>White balance (night): <span style="color:blue">{{ post.White_balance_night }}</span></h2>
+            <h2>Brightness (night): <span style="color:blue">{{ post.Brightness_night }}</span></h2>
+            <h2>Saturation (night): <span style="color:blue">{{ post.Saturation_night }}</span></h2>
+            <h2>Sharpness (night): <span style="color:blue">{{ post.Sharpness_night }}</span></h2>
+            <h2>Digital noise (night): <span style="color:blue">{{ post.Digital_noise_night }}</span></h2>
+            <h2>Exposure level (night): <span style="color:blue">{{ post.Exposure_level_night }}</span></h2>
+            <h2>Exposure mode (night): <span style="color:blue">{{ post.Exposure_mode_night }}</span></h2>
+            <h2>Iris (night): <span style="color:blue">{{ post.Iris_night }}</span></h2>
+            <h2>Exposure time (night): <span style="color:blue">{{ post.Exposure_time_night }}</span></h2>
+            <h2>Exposure gain (night): <span style="color:blue">{{ post.Exposure_gain_night }}</span></h2>
+            <h2>WDR Pro (night): <span style="color:blue">{{ post.Wdr_pro_night }}</span></h2>
+            <h2>WDR level (night): <span style="color:blue">{{ post.wdr_level_night }}</span></h2>
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit9/" role="button">Edit</a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingEleven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEleven" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        NOTES
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseEleven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEleven">
+      <div class="accordion-body">
+
+          <h1>Put all your notes here: {{ post.field_for_notes }}</h1>
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="edit10/" role="button">Edit</a>
+          </div>
+      </div>
+    </div>
+  </div>
+        <div class="d-grid gap-2">
+    <a class="btn btn-primary" href="delete/" role="button">Delete</a>
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
