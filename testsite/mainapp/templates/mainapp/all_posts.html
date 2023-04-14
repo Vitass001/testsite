@@ -36,10 +36,12 @@
     </div>
   </div>
 </nav>
-<form class="d-flex" role="search", action="{% url 'search' %}">
+<center>
+<form class="d-flex" role="search", action="{% url 'search' %}", style="width: 600px;">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+</center>
 <!--  <main>-->
 <!--    <div class="container">-->
 <!--      <div class="row">-->
@@ -73,19 +75,19 @@
 
 
 
-
-<div class="card">
+<center>
+<div class="card" style="width: 600px;">
 
     {% for post in posts %}
 
-  <div class="card-body">
+  <div class="card-body" >
     <h5 class="card-title">{{post.Legal_Entity}}</h5>
       <p>{{ post.pub_date }}</p>
     <a href="{% url 'post_detail' Legal_Entity=post.Legal_Entity %}" class="btn btn-primary">Open</a>
   </div>
     {% endfor %}
 </div>
-
+</center>
 
 
 <!--    <button><a href="/create/">Create Post</a></button>-->
