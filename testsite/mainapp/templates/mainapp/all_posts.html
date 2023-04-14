@@ -41,7 +41,7 @@
 
 
 <center>
-<form class="d-flex" role="search", action="{% url 'search' %}", style="width: 600px;">
+<form class="d-flex" role="search", action="{% url 'search' %}",>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
@@ -57,7 +57,7 @@
 
 
 <center>
-<div class="card" style="width: 600px;">
+<div class="card" >
 
     {% for post in posts %}
 
