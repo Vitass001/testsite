@@ -14,7 +14,7 @@ class Post(models.Model):
     #Create post
     Camera_Name = models.CharField(max_length=500, blank=True, null=True)
     Company = models.CharField(max_length=500, blank=True, null=True)
-    Legal_Entity = models.CharField(max_length=500,)
+    Legal_Entity = models.CharField(max_length=500, unique=True)
     Property_Name = models.CharField(max_length=500,blank=True, null=True )
     Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
 

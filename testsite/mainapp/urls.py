@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.contrib.auth.views import LogoutView
 
 from . import views
 from .views import *
@@ -28,7 +29,7 @@ urlpatterns = [
     # path('<str:title>/delete1/', post_delete1, name='post_delete1'),
     # path('<str:title>/delete2/', post_delete2, name='post_delete2'),
     path('posts/search/', search, name='search'),
-
+    # path('logout/', LogoutView.as_view(), name='logout'),
     # path('list/', book_author_list, name='book_author_list'),
 
 
