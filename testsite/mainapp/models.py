@@ -80,16 +80,16 @@ class Post(models.Model):
 
 
     #Photos
-    Camera_Position_Image = models.ImageField(upload_to='mainapp/static/mainapp/images/',
+    Camera_Position_Image = models.ImageField(upload_to='images/',
                                               null=True, blank=True,)
-    Facebox_Switch_location_image = models.ImageField(upload_to='mainapp/static/mainapp/images/',
+    Facebox_Switch_location_image = models.ImageField(upload_to='images/',
                                null=True, blank=True,)
-    Router_location_image = models.ImageField(upload_to='mainapp/static/mainapp/images/',
+    Router_location_image = models.ImageField(upload_to='images/',
                                null=True, blank=True,)
-    Image_of_signage_in_doorway_image = models.ImageField(upload_to='mainapp/static/mainapp/images/',
+    Image_of_signage_in_doorway_image = models.ImageField(upload_to='images/',
                                null=True, blank=True,)
 
-
+    # 'mainapp/static/mainapp/images/'
     #Day param
     Camera_serial_no = models.CharField(max_length=500, blank=True, null=True)
     Name_of_profile_day = models.CharField(max_length=500, blank=True, null=True)

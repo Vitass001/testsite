@@ -73,7 +73,8 @@
 <!--        </li>-->
 
        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}?next={% url 'login' %}">Logout</a>
+
         </li>
 
       </ul>
@@ -206,7 +207,7 @@
     </h2>
     <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
       <div class="accordion-body">
-        <h3>Camera_Position_Image:
+        <h3>Camera Position Image:
                 {% if post.Camera_Position_Image %}
 
                 <button onclick="openInNewTab('{{ post.Camera_Position_Image.url }}',)">Open Photo</button>
@@ -219,7 +220,7 @@
             </h3>
 
 
-            <h3>Facebox_Switch_location_image:
+            <h3>Facebox Switch location image:
                 {% if post.Facebox_Switch_location_image %}
 
                 <button onclick="openInNewTab('{{ post.Facebox_Switch_location_image.url }}',)">Open Photo</button>
@@ -230,7 +231,7 @@
                 </script>
                 {% endif %}
             </h3>
-            <h3>Router_location_image:
+            <h3>Router location image:
                 {% if post.Router_location_image %}
 
                 <button onclick="openInNewTab('{{ post.Router_location_image.url }}',)">Open Photo</button>
@@ -242,7 +243,7 @@
                 {% endif %}
 
             </h3>
-            <h3>Image_of_signage_in_doorway_image:
+            <h3>Image of signage in doorway image:
                 {% if post.Image_of_signage_in_doorway_image %}
 
                 <button onclick="openInNewTab('{{ post.Image_of_signage_in_doorway_image.url }}',)">Open Photo</button>
