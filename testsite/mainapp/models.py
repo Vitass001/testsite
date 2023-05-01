@@ -10,15 +10,19 @@ class Product(models.Model):
 
 
 class Post(models.Model):
+
     # title = models.CharField(max_length=500,blank=True, null=True )
     #Create post
-    Camera_Name = models.CharField(max_length=500, blank=True, null=True)
-    Company = models.CharField(max_length=500, blank=True, null=True)
-    Legal_Entity = models.CharField(max_length=500, unique=True)
+    Legal_Entity = models.CharField(max_length=500,)
+    Camera_Name = models.CharField(max_length=500,)
+    # company = models.CharField(max_length=500, blank=True, null=True)
+    property = models.CharField(max_length=500, unique=True)
+    # Legal_Entity = models.CharField(max_length=500, unique=True)
     Property_Name = models.CharField(max_length=500,blank=True, null=True )
     Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
-
-
+    town = models.CharField(max_length=500, )
+    postcode = models.CharField(max_length=500, )
+    phone_number = models.CharField(max_length=500, )
     # Test_admin = models.CharField(max_length=500, unique=True)
 
     # Install on site
@@ -204,8 +208,39 @@ class Post(models.Model):
     #                           height_field='height_field',
     #                           width_field='width_field',
     #                           )
+
+
     # image = models.ImageField(upload_to='mainapp/static/mainapp/images/',
     #                           null=True, blank=True,
 
                               # )
     # image = models.ImageField(upload_to='images/', blank=True, null=True)
+class Property(models.Model):
+    Legal_Entity = models.CharField(max_length=500,)
+    # company = models.CharField(max_length=500)
+    property = models.CharField(max_length=500, unique=True)
+    town = models.CharField(max_length=500,)
+    postcode = models.CharField(max_length=500)
+    phone_number = models.CharField(max_length=500)
+
+from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+from django.forms.models import model_to_dict
+
+@receiver(post_save, sender=Post)
+def update_post(sender, instance, created, **kwargs):
+    if created:  # перевіряємо, чи був створений новий об'єкт Post
+        try:
+            # знаходимо об'єкт Property, який відповідає вибраним значенням в PostForm
+            property_obj = Property.objects.get(
+                Legal_Entity=instance.Legal_Entity,
+                property=instance.property
+            )
+            # отримуємо словник зі значеннями полів об'єкта Property та оновлюємо поля об'єкта Post
+            post_dict = model_to_dict(property_obj, fields=['town', 'postcode', 'phone_number'])
+            for key, value in post_dict.items():
+                setattr(instance, key, value)
+            instance.save()
+        except Property.DoesNotExist:
+            pass

@@ -20,8 +20,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'post_create' %}">Camera Create</a>
+          <a class="nav-link" href="{% url 'create_property' %}">Create property</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_create' %}">Create Camera</a>
         </li>
 
         <li class="nav-item">
@@ -62,13 +67,12 @@
     {% for post in posts %}
 
   <div class="card-body" >
-    <h5 class="card-title">{{post.Legal_Entity}}</h5>
+    <h5 class="card-title">{{post.Legal_Entity}}-{{post.property}}-{{post.Camera_Name}}</h5>
       <p>{{ post.pub_date }}</p>
-    <a href="{% url 'post_detail' Legal_Entity=post.Legal_Entity %}" class="btn btn-primary">Open</a>
+    <a href="{% url 'post_detail' Legal_Entity=post.Legal_Entity property=post.property Camera_Name=post.Camera_Name %}" class="btn btn-primary">Open</a>
   </div>
     {% endfor %}
 </div>
-
 
 
 

@@ -76,6 +76,17 @@ def post_create(request):
     return render(request, 'mainapp/post_create.html', {'form': form,}, )
 
 
+
+
+
+
+
+
+
+
+
+
+
 def calculator(request):
 
     return render(request, 'mainapp/calculator.html')

@@ -1,15 +1,104 @@
 from django import forms
 from .models import Post
+from .models import *
+from .models import Post
+from .models import Property
+
+
+class PropertyForm(forms.ModelForm):
+
+    class Meta:
+        model = Property
+        fields = ['Legal_Entity', 'property', 'town', 'postcode', 'phone_number']
+
+
+
+# class PostForm(forms.ModelForm):
+#     Legal_Entity = forms.ModelChoiceField(
+#         queryset=Property.objects.values_list('Legal_Entity', flat=True).distinct(),
+#         to_field_name='Legal_Entity',
+#         widget=forms.Select(attrs={'class': 'form-control', 'id': 'Legal_Entity'})
+#     )
+#     property = forms.ModelChoiceField(
+#         queryset=Property.objects.none(),
+#         widget=forms.Select(attrs={'class': 'form-control', 'id': 'property'})
+#     )
+#
+#     class Meta:
+#         model = Post
+#         fields = ['Legal_Entity', 'property', 'Camera_Name']
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['Legal_Entity'].queryset = Property.objects.values_list('Legal_Entity', flat=True).distinct()
+#
+#         if 'Legal_Entity' in self.data:
+#             try:
+#                 Legal_Entity = self.data.get('Legal_Entity')
+#                 self.fields['property'].queryset = Property.objects.filter(Legal_Entity=Legal_Entity).values_list(
+#                     'property', flat=True).distinct()
+#             except (ValueError, TypeError):
+#                 pass
+#         elif self.instance.pk:
+#             self.fields['property'].queryset = Property.objects.filter(
+#                 Legal_Entity=self.instance.Legal_Entity).values_list('property', flat=True).distinct()
+
+
+
+
+
+
+
+
+
+
+
+
 
 class PostForm(forms.ModelForm):
+    # company = forms.ModelChoiceField(queryset=Property.objects.values_list('company', flat=True).distinct())
+    Legal_Entity = forms.ModelChoiceField(queryset=Property.objects.values_list('Legal_Entity', flat=True).distinct(),
+                                     to_field_name='Legal_Entity')
+    property = forms.ModelChoiceField(queryset=Property.objects.values_list('property', flat=True).distinct(),
+                                     to_field_name='property')
+
+
+
     class Meta:
         model = Post
-        fields = ['Legal_Entity', 'Property_Name', 'Town_Postcode', 'Camera_Name', 'Company'
-                   ]
 
-        # widgets = {
-        #     'category': forms.Select(choices=Post.CATEGORY_CHOICES)
-        # }
+        fields = ['Legal_Entity', 'property', 'Camera_Name',
+                   ]
+        # 'Legal_Entity', 'Property_Name', 'Town_Postcode', 'Camera_Name', 'Company'
+
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['Legal_Entity'].queryset = Property.objects.values_list('Legal_Entity', flat=True).distinct()
+
+        if 'Legal_Entity' in self.data:
+            try:
+                legal_entity = self.data.get('Legal_Entity')
+                self.fields['property'].queryset = Property.objects.filter(Legal_Entity=legal_entity).values_list(
+                    'property', flat=True).distinct()
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['property'].queryset = Property.objects.filter(
+                Legal_Entity=self.instance.Legal_Entity).values_list('property', flat=True).distinct()
+
+
+
+
+
+
+
+
+
+
+
+
 
 class PostForm1(forms.ModelForm):
     class Meta:
@@ -113,6 +202,13 @@ class PostForm10(forms.ModelForm):
 
 
 
+
+
 class LoginForm(forms.Form):
+    # email = forms.EmailField()
+    # username = forms.EmailField(label='Email', max_length=254, widget=forms.EmailInput(attrs={'autofocus': True}))
     username = forms.CharField(label='Who is here?', max_length=100)
     password = forms.CharField(widget=forms.PasswordInput(), label='Tell me your secret')
+
+
+

@@ -22,7 +22,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
         </li>
-
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_property' %}">Create property</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'calculator' %}">Calculator</a>
         </li>
@@ -50,17 +52,72 @@
 
 
 
+{#<center>#}
+{#<h1>Create Camera</h1>#}
+{##}
+{#<form method="post" enctype="multipart/form-data" >#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{##}
+{#    <button type="submit">Upload</button>#}
+{##}
+{#</form>#}
+{##}
+{#</center>#}
+{##}
+{##}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <center>
-<h1>Create Camera</h1>
+<div class="container">
+  <h1>Create Camera</h1>
 
 <form method="post" enctype="multipart/form-data" >
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Upload</button>
-</form>
 
+
+    <button type="submit">Upload</button>
+  </form>
+</div>
 </center>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#id_Legal_Entity").change(function() {
+      var Legal_Entity = $(this).val();
+      $.ajax({
+        url: "{% url 'property_list_ajax' %}",
+        data: {'Legal_Entity': Legal_Entity},
+        dataType: 'json',
+        success: function(data) {
+          $("#id_property").empty();
+          $.each(data.properties, function(i, property) {
+            $("#id_property").append($('<option>').val(property.id).text(property.property));
+          });
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
 
 
 
