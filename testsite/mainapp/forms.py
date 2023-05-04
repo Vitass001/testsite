@@ -197,8 +197,8 @@ class PostForm10(forms.ModelForm):
 class LoginForm(forms.Form):
     # email = forms.EmailField()
     # username = forms.EmailField(label='Email', max_length=254, widget=forms.EmailInput(attrs={'autofocus': True}))
-    username = forms.CharField(label='Who is here?', max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput(), label='Tell me your secret')
+    username = forms.CharField(label='Login', max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput(), label='Password')
 
 
 

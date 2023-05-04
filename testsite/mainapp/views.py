@@ -129,7 +129,7 @@ def post_create(request):
 
 
 
-
+@login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyForm(request.POST or None, request.FILES or None)
@@ -148,7 +148,7 @@ def create_property(request):
 
 
 
-
+@login_required
 def property_list_ajax(request):
     Legal_Entity = request.GET.get('Legal_Entity')
     properties = Property.objects.filter(Legal_Entity=Legal_Entity).values('id', 'property')
@@ -206,7 +206,7 @@ def property_list_ajax(request):
 
 
 
-
+@login_required
 def calculator(request):
 
     return render(request, 'mainapp/calculator.html')
@@ -261,7 +261,7 @@ def all_posts(request):
 
     return render(request, 'mainapp/all_posts.html', {'posts': posts})
 
-
+@login_required
 def search(request):
     query = request.GET.get('q')
     query_parts = query.split('-')
@@ -292,7 +292,7 @@ def search(request):
     }
     return render(request, 'mainapp/all_posts.html', context)
 
-
+@login_required
 def post_edit(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -306,7 +306,7 @@ def post_edit(request, Legal_Entity, Camera_Name, property):
     else:
         form = PostForm(instance=post)
     return render(request, 'mainapp/post_edit.html', {'form': form})
-
+@login_required
 def post_edit0(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -323,7 +323,7 @@ def post_edit0(request, Legal_Entity, Camera_Name, property):
 
 
 
-
+@login_required
 def post_edit1(request, Legal_Entity, Camera_Name, property ):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -337,7 +337,7 @@ def post_edit1(request, Legal_Entity, Camera_Name, property ):
     else:
         form = PostForm1(instance=post)
     return render(request, 'mainapp/post_edit1.html', {'form': form})
-
+@login_required
 def post_edit2(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -351,7 +351,7 @@ def post_edit2(request, Legal_Entity, Camera_Name, property):
     return render(request, 'mainapp/post_edit2.html', {'form': form})
 
 
-
+@login_required
 def post_edit3(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -364,7 +364,7 @@ def post_edit3(request, Legal_Entity, Camera_Name, property):
         form = PostForm3(instance=post)
     return render(request, 'mainapp/post_edit3.html', {'form': form})
 
-
+@login_required
 def post_edit4(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -377,7 +377,7 @@ def post_edit4(request, Legal_Entity, Camera_Name, property):
         form = PostForm4(instance=post)
     return render(request, 'mainapp/post_edit4.html', {'form': form})
 
-
+@login_required
 def post_edit5(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -462,7 +462,7 @@ def post_edit10(request, Legal_Entity, Camera_Name, property):
 
 
 
-
+@login_required
 def post_delete(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == 'POST':
