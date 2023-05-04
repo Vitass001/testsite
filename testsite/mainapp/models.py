@@ -22,7 +22,7 @@ class Post(models.Model):
     postcode = models.CharField(max_length=500, )
     phone_number = models.CharField(max_length=500, )
     # Test_admin = models.CharField(max_length=500, unique=True)
-    confirm_video_recorded = models.BooleanField(default=False,blank=True, null=True)
+    confirm_video_recorded = models.BooleanField(blank=True, null=True)
     door_photo = models.ImageField(upload_to='images/', blank=True, null=True)
     aspect_of_door = models.CharField(blank=True, null=True, max_length=500)
     light_meter_reading_inside = models.CharField(blank=True, null=True, max_length=500)
@@ -32,7 +32,51 @@ class Post(models.Model):
     internet_speed_test = models.ImageField(upload_to='images/', blank=True, null=True)
 
 
+    # Hardware Information:
 
+
+
+
+    camera_serial = models.CharField(max_length=50,blank=True, null=True)
+    face_box_id = models.CharField(max_length=50, blank=True, null=True)
+    kasa_login_id = models.CharField(max_length=50, blank=True, null=True)
+    SWITCH_MODELS = (
+        ('HIK', 'HIK'),
+        ('TPLink', 'TPLink'),
+
+    )
+
+    switch_make_and_model = models.CharField(choices=SWITCH_MODELS, max_length=50, blank=True, null=True)
+
+    router_serial = models.CharField(max_length=50, blank=True, null=True)
+
+    PHONE_MODELS = (
+        ('Iphone 8 ', 'Iphone 8 '),
+        ('Iphone 10', 'Iphone 10'),
+
+    )
+
+    phone_models = models.CharField(choices=PHONE_MODELS, max_length=50, blank=True, null=True)
+    phone_serial = models.CharField(max_length=50, blank=True, null=True)
+    phone_sim = models.CharField(max_length=50, blank=True, null=True)
+
+    # Camera Setup:
+
+    Generated_Camera_name = models.CharField(max_length=50, blank=True, null=True)
+    firmware_up_to_date = models.BooleanField(blank=True, null=True)
+    sd_card_installed = models.BooleanField(blank=True, null=True)
+    settings_optimized = models.BooleanField(blank=True, null=True)
+    face_size_screenshot = models.ImageField(upload_to='images/', blank=True, null=True)
+    min_face_size = models.IntegerField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+
+    # Site Audit information:
+
+    door_sticker_photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    set_up_pc_and_app = models.BooleanField(blank=True, null=True)
+    train_staff = models.BooleanField(blank=True, null=True)
+    customer_sme_name = models.CharField(max_length=100, blank=True, null=True)
+    leave_fw_install_crib_sheet_photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
 
 

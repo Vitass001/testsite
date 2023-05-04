@@ -24,19 +24,19 @@
         </li>
 
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_property' %}">Create property</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_create' %}">Create Camera</a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'calculator' %}">Calculator</a>
         </li>
 
-<!--       <li class="nav-item">-->
-<!--          <a class="nav-link" href="edit/">Post Edit</a>-->
-<!--        </li>-->
-<!--       <li class="nav-item">-->
-<!--          <a class="nav-link" href="delete/">Post Delete</a>-->
-<!--        </li>-->
-
        <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}?next={% url 'login' %}">Logout</a>
-
+          <a class="nav-link" href="{% url 'logout' %}?next={% url 'login' %}">Logout</a>
         </li>
 
       </ul>
@@ -58,17 +58,37 @@
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
 
-<h2>Legal Entity: <span style="color: blue">{{ post.Legal_Entity }}</span></h2>
-<h2>Property : <span style="color: blue">{{ post.property }}</span></h2>
-<h2>Camera position: <span style="color: blue">{{ post.Camera_Name }}</span></h2>
+{#<h2>Legal Entity: <span style="color: blue">{{ post.Legal_Entity }}</span></h2>#}
+{#<h2>Property : <span style="color: blue">{{ post.property }}</span></h2>#}
+{#<h2>Camera position: <span style="color: blue">{{ post.Camera_Name }}</span></h2>#}
 
+<table style="font-size:24px;">
+  <tr>
+    <td style="font-weight:bold;">Legal Entity:</td>
+    <td><span style="color: blue">{{ post.Legal_Entity }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold;">Property:</td>
+    <td><span style="color: blue">{{ post.property }}</span></td>
+  </tr>
+   <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold;">Camera position:</td>
+    <td><span style="color: blue">{{  post.Camera_Name }}</span></td>
+  </tr>
 
+</table>
+   <tr>
 
-{#          <h2>Company: {{ post.company }}</h2>#}
-{#          <h2>Property Name: {{ post.Property_Name }}</h2>#}
-{#          <h2>Town  Postcode: {{ post.Town_Postcode }}</h2>#}
-
-
+    <td><hr></td>
+  </tr>
 
             <div class="d-grid gap-2">
             <a class="btn btn-primary" href="edit/" role="button">Edit</a>
@@ -112,33 +132,65 @@
     <td style="font-weight:bold;">Details of site:</td>
     <td><span style="color: blue">{{ post.Legal_Entity }}-{{ post.property }}-{{ post.Camera_Name }}</span></td>
   </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
   <tr>
     <td style="font-weight:bold;">Town:</td>
     <td><span style="color: blue">{{ post.town }}</span></td>
+  </tr>
+   <tr>
+    <td><hr></td>
+    <td><hr></td>
   </tr>
   <tr>
     <td style="font-weight:bold;">Postcode:</td>
     <td><span style="color: blue">{{ post.postcode }}</span></td>
   </tr>
   <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
     <td style="font-weight:bold;">Phone number:</td>
     <td><span style="color: blue">{{ post.phone_number }}</span></td>
+  </tr>
+   <tr>
+    <td><hr></td>
+    <td><hr></td>
   </tr>
   <tr>
     <td style="font-weight:bold;">Confirm video recorded:</td>
     <td><span style="color: blue">{{ post.confirm_video_recorded }}</span></td>
   </tr>
+   <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
   <tr>
     <td style="font-weight:bold;">Photo of door from camera position:</td>
     <td><span style="color: blue">{{ post.door_photo }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
   </tr>
   <tr>
     <td style="font-weight:bold;">Aspect of door:</td>
     <td><span style="color: blue">{{ post.aspect_of_door }}</span></td>
   </tr>
+   <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
   <tr>
     <td style="font-weight:bold;">Light meter reading inside:</td>
     <td><span style="color: blue">{{ post.light_meter_reading_inside }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
   </tr>
   <tr>
     <td style="font-weight:bold;">Internet speed test (router or customer network):</td>
@@ -146,10 +198,10 @@
   </tr>
 </table>
 
+<tr>
 
-
-
-
+    <td><hr></td>
+  </tr>
 
           <div class="d-grid gap-2">
             <a class="btn btn-primary" href="edit0/" role="button">Edit</a>
@@ -161,27 +213,83 @@
     <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        CAMERA SETTINGS FOR INSTALLERS
+        Hardware Information:
       </button>
     </h2>
     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
       <div class="accordion-body">
 
 
-          <h2>Vivotek cam updated: <span style="color:blue">{{ post.Vivotek_cam_updated }}</span></h2>
-        <h2>Lumen or candle: <span style="color:blue">{{ post.Lumen_or_candle }}</span></h2>
-        <h2>Auto Camera Name: <span style="color:blue">{{ post.Auto_Camera_Name }}</span></h2>
-        <h2>Input Camera Name Into Camera: <span style="color:blue">{{ post.Input_Camera_Name_Into_Camera }}</span></h2>
-        <h2>Aspect: <span style="color:blue">{{ post.Aspect }}</span></h2>
-        <h2>Door type: <span style="color:blue">{{ post.Door_type }}</span></h2>
-        <h2>Describe aspect: <span style="color:blue">{{ post.Describe_aspect }}</span></h2>
-        <h2>Camera time: <span style="color:blue">{{ post.Camera_time }}</span></h2>
-        <h2>Bitrate: <span style="color:blue">{{ post.Bitrate }}</span></h2>
-        <h2>Video quality: <span style="color:blue">{{ post.Video_quality }}</span></h2>
-        <h2>Zoom to door and preset: <span style="color:blue">{{ post.Zoom_to_door_and_preset }}</span></h2>
+          <table style="font-size: 24px;">
+  <tr>
+    <td style="font-weight: bold;">Camera Serial:</td>
+    <td><span style="color: blue">{{ post.camera_serial }}</span></td>
+  </tr>
+      <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Facebox ID:</td>
+    <td><span style="color: blue">{{ post.face_box_id }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Kasa Login ID:</td>
+    <td><span style="color: blue">{{ post.kasa_login_id }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Switch Make and Model:</td>
+    <td><span style="color: blue">{{ post.switch_make_and_model }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Router Serial:</td>
+    <td><span style="color: blue">{{ post.router_serial }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Phone Model:</td>
+    <td><span style="color: blue">{{ post.phone_models }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Phone Serial:</td>
+    <td><span style="color: blue">{{ post.phone_serial }}</span></td>
+  </tr>
+    <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Phone SIM:</td>
+    <td><span style="color: blue">{{ post.phone_sim }}</span></td>
+  </tr>
+</table>
+
+<tr>
+
+    <td><hr></td>
+  </tr>
 
           <div class="d-grid gap-2">
-            <a class="btn btn-primary" href="edit2/" role="button">Edit</a>
+            <a class="btn btn-primary" href="edit1/" role="button">Edit</a>
           </div>
       </div>
     </div>
@@ -190,24 +298,77 @@
     <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingFour">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        FINAL INSTALL CHECKS
+        Camera Setup:
       </button>
     </h2>
     <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
       <div class="accordion-body">
 
-        <h2>Horiz mfs from detection: <span style="color:blue">{{ post.Horiz_mfs_from_detection }}</span></h2>
-        <h2>Horiz mfs from safr: <span style="color:blue">{{ post.Horiz_mfs_from_safr }}</span></h2>
-        <h2>Are faces detected: <span style="color:blue">{{ post.Are_faces_detected }}</span></h2>
-        <h2>Are alerts working: <span style="color:blue">{{ post.Are_alerts_working }}</span></h2>
-        <h2>Name of store manager: <span style="color:blue">{{ post.Name_of_store_manager }}</span></h2>
-        <h2>Is web login: <span style="color:blue">{{ post.Is_web_login }}</span></h2>
-        <h2>User login app: <span style="color:blue">{{ post.User_login_app }}</span></h2>
-        <h2>User trained: <span style="color:blue">{{ post.User_trained }}</span></h2>
-        <h2>Name of fw user: <span style="color:blue">{{ post.Name_of_fw_user }}</span></h2>
+
+
+<table style="font-size: 24px;">
+  <tr>
+    <td style="font-weight: bold;">Input Generated Camera name into camera:</td>
+    <td><span style="color: blue">{{ post.Generated_Camera_name }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Firmware up to date?:</td>
+    <td><span style="color: blue">{{ post.firmware_up_to_date }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">SD card installed and recording:</td>
+    <td><span style="color: blue">{{ post.sd_card_installed }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Camera Settings all optimised:</td>
+    <td><span style="color: blue">{{ post.settings_optimized }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Screenshot of RMFS Face size at door from SAFR:</td>
+    <td><span style="color: blue">{{ post.face_size_screenshot }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Recogniser Minimum face size final setting:</td>
+    <td><span style="color: blue">{{ post.min_face_size }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Notes for future reference:</td>
+    <td><span style="color: blue">{{ post.notes }}</span></td>
+  </tr>
+</table>
+
+
+<tr>
+
+    <td><hr></td>
+  </tr>
 
           <div class="d-grid gap-2">
-            <a class="btn btn-primary" href="edit3/" role="button">Edit</a>
+            <a class="btn btn-primary" href="edit2/" role="button">Edit</a>
           </div>
        </div>
     </div>
@@ -217,7 +378,7 @@
     <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingFive">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        PHOTOS ON SITE
+        Site Audit information:
       </button>
     </h2>
     <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
@@ -225,9 +386,49 @@
 
 
 
+            <table style="font-size: 24px;">
+  <tr>
+    <td style="font-weight: bold;">Door sticker photo:</td>
+    <td><span style="color: blue">{{ post.door_sticker_photo }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Set Up PC & App:</td>
+    <td><span style="color: blue">{{ post.set_up_pc_and_app }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Train Staff:</td>
+    <td><span style="color: blue">{{ post.train_staff }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Customer Subject Matter Expert (for restarts / site technical issues):</td>
+    <td><span style="color: blue">{{ post.customer_sme_name }}</span></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Leave FW install crib sheet (with install positions / kit information):</td>
+    <td><span style="color: blue">{{ post.leave_fw_install_crib_sheet }}</span></td>
+  </tr>
+</table>
+
+
 
             <div class="d-grid gap-2">
-            <a class="btn btn-primary" href="edit4/" role="button">Edit</a>
+            <a class="btn btn-primary" href="edit3/" role="button">Edit</a>
           </div>
       </div>
     </div>

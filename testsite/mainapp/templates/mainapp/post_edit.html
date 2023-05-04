@@ -50,8 +50,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'post_create' %}">Camera Create</a>
+          <a class="nav-link" href="{% url 'create_property' %}">Create property</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_create' %}">Create Camera</a>
         </li>
 
         <li class="nav-item">
@@ -59,8 +64,7 @@
         </li>
 
        <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}?next={% url 'login' %}">Logout</a>
-
+          <a class="nav-link" href="{% url 'logout' %}?next={% url 'login' %}">Logout</a>
         </li>
 
       </ul>
@@ -85,3 +89,25 @@
     <button type="submit">Save changes</button>
   </form>
 </center>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#id_Legal_Entity").change(function() {
+      var Legal_Entity = $(this).val();
+      $.ajax({
+        url: "{% url 'property_list_ajax' %}",
+        data: {'Legal_Entity': Legal_Entity},
+        dataType: 'json',
+        success: function(data) {
+          $("#id_property").empty();
+          $.each(data.properties, function(i, property) {
+            $("#id_property").append($('<option>').val(property.id).text(property.property));
+          });
+        }
+      });
+    });
+  });
+</script>

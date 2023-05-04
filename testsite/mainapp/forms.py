@@ -63,15 +63,11 @@ class PostForm(forms.ModelForm):
                                      to_field_name='property')
 
 
-
     class Meta:
         model = Post
 
         fields = ['Legal_Entity', 'property', 'Camera_Name',
                    ]
-        # 'Legal_Entity', 'Property_Name', 'Town_Postcode', 'Camera_Name', 'Company'
-
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -89,10 +85,6 @@ class PostForm(forms.ModelForm):
                 Legal_Entity=self.instance.Legal_Entity).values_list('property', flat=True).distinct()
 
 
-
-
-
-
 class PostForm0(forms.ModelForm):
     class Meta:
         model = Post
@@ -107,10 +99,11 @@ class PostForm0(forms.ModelForm):
 class PostForm1(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['Installer_Company', 'Installer_email', 'Install_date', 'Door_entrance_width',
-                'Distance_from_door', 'Height', 'Angle_to_face_Degrees', 'Pixels_per_face',
-                'Video_on_teams', 'Facebox_id', 'Kasa_login', 'Router_Serial_No',
-                'Phone_Model', 'Phone_Serial_No', 'Lightmeter_reading_at_entrance']
+        fields = ['camera_serial', 'face_box_id', 'kasa_login_id', 'switch_make_and_model', 'router_serial', 'phone_models', 'phone_serial', 'phone_sim']
+        # fields = ['Installer_Company', 'Installer_email', 'Install_date', 'Door_entrance_width',
+        #         'Distance_from_door', 'Height', 'Angle_to_face_Degrees', 'Pixels_per_face',
+        #         'Video_on_teams', 'Facebox_id', 'Kasa_login', 'Router_Serial_No',
+        #         'Phone_Model', 'Phone_Serial_No', 'Lightmeter_reading_at_entrance']
 
         # widgets = {
         #     'category': forms.Select(choices=Post.CATEGORY_CHOICES)
@@ -119,28 +112,21 @@ class PostForm1(forms.ModelForm):
 class PostForm2(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['Vivotek_cam_updated', 'Lumen_or_candle', 'Auto_Camera_Name',
-                  'Input_Camera_Name_Into_Camera', 'Aspect', 'Door_type', 'Describe_aspect',
-                  'Camera_time', 'Bitrate', 'Video_quality', 'Zoom_to_door_and_preset']
-        # widgets = {
-        #     'Camera_position_photo': forms.ClearableFileInput(attrs={'multiple': True}),
-        #     'Facebox_photo': forms.ClearableFileInput(attrs={'multiple': True}),
-        #     'Switch_photo': forms.ClearableFileInput(attrs={'multiple': True}),
-        #     'Router_photo': forms.ClearableFileInput(attrs={'multiple': True}),
-        # }
+        fields = ['Generated_Camera_name', 'firmware_up_to_date', 'sd_card_installed', 'settings_optimized', 'face_size_screenshot',
+                  'min_face_size', 'notes']
 
-        # widgets = {
-        #     'category': forms.Select(choices=Post.CATEGORY_CHOICES)
-        # }
+        # fields = ['Vivotek_cam_updated', 'Lumen_or_candle', 'Auto_Camera_Name',
+        #           'Input_Camera_Name_Into_Camera', 'Aspect', 'Door_type', 'Describe_aspect',
+        #           'Camera_time', 'Bitrate', 'Video_quality', 'Zoom_to_door_and_preset']
 
 
 class PostForm3(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['Horiz_mfs_from_detection', 'Horiz_mfs_from_safr', 'Are_faces_detected',
-                  'Are_alerts_working', 'Name_of_store_manager', 'Is_web_login', 'User_login_app',
-                  'User_trained', 'Name_of_fw_user']
-
+        fields = ['door_sticker_photo', 'set_up_pc_and_app', 'train_staff', 'customer_sme_name', 'leave_fw_install_crib_sheet_photo']
+        # fields = ['Horiz_mfs_from_detection', 'Horiz_mfs_from_safr', 'Are_faces_detected',
+        #           'Are_alerts_working', 'Name_of_store_manager', 'Is_web_login', 'User_login_app',
+        #           'User_trained', 'Name_of_fw_user']
 
 
 class PostForm4(forms.ModelForm):
