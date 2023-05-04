@@ -93,7 +93,11 @@ class PostForm(forms.ModelForm):
 
 
 
-
+class PostForm0(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['town', 'postcode', 'phone_number', 'confirm_video_recorded', 'door_photo', 'aspect_of_door', 'light_meter_reading_inside',
+                   'internet_speed_test']
 
 
 

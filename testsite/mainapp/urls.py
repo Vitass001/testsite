@@ -21,6 +21,7 @@ urlpatterns = [
 
 
     path('<str:Legal_Entity>-<str:property>-<str:Camera_Name>/edit/', post_edit, name='post_edit'),
+    path('<str:Legal_Entity>-<str:property>-<str:Camera_Name>/edit0/', post_edit0, name='post_edit0'),
     path('<str:Legal_Entity>-<str:property>-<str:Camera_Name>/edit1/', post_edit1, name='post_edit1'),
     path('<str:Legal_Entity>-<str:property>-<str:Camera_Name>/edit2/', post_edit2, name='post_edit2'),
     path('<str:Legal_Entity>-<str:property>-<str:Camera_Name>/edit3/', post_edit3, name='post_edit3'),

@@ -8,7 +8,7 @@ from .models import Product
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post
-from .forms import PostForm, PostForm1, PostForm2, PostForm3, PostForm4, PostForm5, PostForm6, PostForm7, PostForm8, PostForm9, PostForm10, PropertyForm
+from .forms import PostForm, PostForm1, PostForm2, PostForm3, PostForm4, PostForm5, PostForm6, PostForm7, PostForm8, PostForm9, PostForm10, PropertyForm, PostForm0
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -292,6 +292,7 @@ def search(request):
     }
     return render(request, 'mainapp/all_posts.html', context)
 
+
 def post_edit(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -305,6 +306,22 @@ def post_edit(request, Legal_Entity, Camera_Name, property):
     else:
         form = PostForm(instance=post)
     return render(request, 'mainapp/post_edit.html', {'form': form})
+
+def post_edit0(request, Legal_Entity, Camera_Name, property):
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
+    if request.method == "POST":
+        form = PostForm0(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False,)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+    else:
+        form = PostForm0(instance=post)
+    return render(request, 'mainapp/post_edit0.html', {'form': form})
+
+
 
 
 def post_edit1(request, Legal_Entity, Camera_Name, property ):

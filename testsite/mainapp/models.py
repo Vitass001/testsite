@@ -14,16 +14,28 @@ class Post(models.Model):
     # title = models.CharField(max_length=500,blank=True, null=True )
     #Create post
     Legal_Entity = models.CharField(max_length=500,)
-    Camera_Name = models.CharField(max_length=500,)
-    # company = models.CharField(max_length=500, blank=True, null=True)
     property = models.CharField(max_length=500, unique=True)
-    # Legal_Entity = models.CharField(max_length=500, unique=True)
+    Camera_Name = models.CharField(max_length=500,)
     Property_Name = models.CharField(max_length=500,blank=True, null=True )
-    Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
+    # Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
     town = models.CharField(max_length=500, )
     postcode = models.CharField(max_length=500, )
     phone_number = models.CharField(max_length=500, )
     # Test_admin = models.CharField(max_length=500, unique=True)
+    confirm_video_recorded = models.BooleanField(default=False,blank=True, null=True)
+    door_photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    aspect_of_door = models.CharField(blank=True, null=True, max_length=500)
+    light_meter_reading_inside = models.CharField(blank=True, null=True, max_length=500)
+    # калькулятор
+    # camera_calculator_info = models.CharField(blank=True, null=True, max_length=500)
+
+    internet_speed_test = models.ImageField(upload_to='images/', blank=True, null=True)
+
+
+
+
+
+
 
     # Install on site
     Installer_Company = models.CharField(max_length=500,blank=True, null=True )
