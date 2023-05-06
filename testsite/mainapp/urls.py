@@ -10,6 +10,8 @@ urlpatterns = [
     path('create/', post_create, name='post_create'),
     path('detail/', post_detail, name='post_detail'),
     path('create_property/', create_property, name='create_property'),
+    path('create_Legal_Entity/', create_Legal_Entity, name='create_Legal_Entity'),
+
     path('posts/', all_posts, name='all_posts'),
     path('posts/calculator/', calculator, name='calculator'),
 

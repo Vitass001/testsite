@@ -14,7 +14,7 @@ class Post(models.Model):
     # title = models.CharField(max_length=500,blank=True, null=True )
     #Create post
     Legal_Entity = models.CharField(max_length=500,)
-    property = models.CharField(max_length=500, unique=True)
+    property = models.CharField(max_length=500,)
     Camera_Name = models.CharField(max_length=500,)
     Property_Name = models.CharField(max_length=500,blank=True, null=True )
     # Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
@@ -22,7 +22,8 @@ class Post(models.Model):
     postcode = models.CharField(max_length=500, )
     phone_number = models.CharField(max_length=500, )
     # Test_admin = models.CharField(max_length=500, unique=True)
-    confirm_video_recorded = models.BooleanField(blank=True, null=True)
+    confirm_video_recorded = models.BooleanField()
+
     door_photo = models.ImageField(upload_to='images/', blank=True, null=True)
     aspect_of_door = models.CharField(blank=True, null=True, max_length=500)
     light_meter_reading_inside = models.CharField(blank=True, null=True, max_length=500)
@@ -63,9 +64,9 @@ class Post(models.Model):
     # Camera Setup:
 
     Generated_Camera_name = models.CharField(max_length=50, blank=True, null=True)
-    firmware_up_to_date = models.BooleanField(blank=True, null=True)
-    sd_card_installed = models.BooleanField(blank=True, null=True)
-    settings_optimized = models.BooleanField(blank=True, null=True)
+    firmware_up_to_date = models.BooleanField()
+    sd_card_installed = models.BooleanField()
+    settings_optimized = models.BooleanField()
     face_size_screenshot = models.ImageField(upload_to='images/', blank=True, null=True)
     min_face_size = models.IntegerField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
@@ -73,8 +74,8 @@ class Post(models.Model):
     # Site Audit information:
 
     door_sticker_photo = models.ImageField(upload_to='images/', blank=True, null=True)
-    set_up_pc_and_app = models.BooleanField(blank=True, null=True)
-    train_staff = models.BooleanField(blank=True, null=True)
+    set_up_pc_and_app = models.BooleanField()
+    train_staff = models.BooleanField()
     customer_sme_name = models.CharField(max_length=100, blank=True, null=True)
     leave_fw_install_crib_sheet_photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
@@ -278,6 +279,13 @@ class Property(models.Model):
     town = models.CharField(max_length=500,)
     postcode = models.CharField(max_length=500)
     phone_number = models.CharField(max_length=500)
+
+
+
+class Legal(models.Model):
+    Legal_Entity = models.CharField(max_length=500,)
+
+
 
 from django.db import models
 from django.dispatch import receiver

@@ -8,7 +8,7 @@ from .models import Product
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post
-from .forms import PostForm, PostForm1, PostForm2, PostForm3, PostForm4, PostForm5, PostForm6, PostForm7, PostForm8, PostForm9, PostForm10, PropertyForm, PostForm0
+from .forms import *
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -143,8 +143,16 @@ def create_property(request):
 
 
 
+def create_Legal_Entity(request):
+    if request.method == 'POST':
+        form = LegalForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            return redirect(all_posts)
+    else:
+        form = LegalForm()
 
-
+    return render(request, 'mainapp/create_Legal_Entity.html', {'form': form }, )
 
 
 
@@ -310,11 +318,9 @@ def post_edit(request, Legal_Entity, Camera_Name, property):
 def post_edit0(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm0(request.POST, instance=post)
+        form = PostForm0(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            post = form.save(commit=False,)
-            post.author = request.user
-            post.published_date = timezone.now()
+
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
@@ -327,11 +333,9 @@ def post_edit0(request, Legal_Entity, Camera_Name, property):
 def post_edit1(request, Legal_Entity, Camera_Name, property ):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm1(request.POST, instance=post)
+        form = PostForm1(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            post = form.save(commit=False,)
-            post.author = request.user
-            post.published_date = timezone.now()
+
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:

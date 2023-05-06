@@ -148,11 +148,9 @@ def search(request):
 def post_edit(request, title):
     post = get_object_or_404(Post, title=title)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            post = form.save(commit=False,)
-            post.author = request.user
-            post.published_date = timezone.now()
+
             post.save()
             return redirect('post_detail', title=post.title)
     else:
@@ -162,11 +160,9 @@ def post_edit(request, title):
 def post_edit1(request, title):
     post = get_object_or_404(Post, title=title)
     if request.method == "POST":
-        form = PostForm1(request.POST, instance=post)
+        form = PostForm1(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            post = form.save(commit=False,)
-            post.author = request.user
-            post.published_date = timezone.now()
+
             post.save()
             return redirect('post_detail', title=post.title)
     else:

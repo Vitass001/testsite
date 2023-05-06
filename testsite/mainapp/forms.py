@@ -1,58 +1,26 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 from .models import Post
 from .models import *
 from .models import Post
 from .models import Property
 
 
+class LegalForm(forms.ModelForm):
+
+    class Meta:
+        model = Legal
+        fields = ['Legal_Entity']
+
+
 class PropertyForm(forms.ModelForm):
+    Legal_Entity = forms.ModelChoiceField(queryset=Legal.objects.values_list('Legal_Entity', flat=True).distinct(),
+                                          to_field_name='Legal_Entity')
 
     class Meta:
         model = Property
         fields = ['Legal_Entity', 'property', 'town', 'postcode', 'phone_number']
-
-
-
-# class PostForm(forms.ModelForm):
-#     Legal_Entity = forms.ModelChoiceField(
-#         queryset=Property.objects.values_list('Legal_Entity', flat=True).distinct(),
-#         to_field_name='Legal_Entity',
-#         widget=forms.Select(attrs={'class': 'form-control', 'id': 'Legal_Entity'})
-#     )
-#     property = forms.ModelChoiceField(
-#         queryset=Property.objects.none(),
-#         widget=forms.Select(attrs={'class': 'form-control', 'id': 'property'})
-#     )
-#
-#     class Meta:
-#         model = Post
-#         fields = ['Legal_Entity', 'property', 'Camera_Name']
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['Legal_Entity'].queryset = Property.objects.values_list('Legal_Entity', flat=True).distinct()
-#
-#         if 'Legal_Entity' in self.data:
-#             try:
-#                 Legal_Entity = self.data.get('Legal_Entity')
-#                 self.fields['property'].queryset = Property.objects.filter(Legal_Entity=Legal_Entity).values_list(
-#                     'property', flat=True).distinct()
-#             except (ValueError, TypeError):
-#                 pass
-#         elif self.instance.pk:
-#             self.fields['property'].queryset = Property.objects.filter(
-#                 Legal_Entity=self.instance.Legal_Entity).values_list('property', flat=True).distinct()
-
-
-
-
-
-
-
-
-
-
-
 
 
 class PostForm(forms.ModelForm):
@@ -84,8 +52,20 @@ class PostForm(forms.ModelForm):
             self.fields['property'].queryset = Property.objects.filter(
                 Legal_Entity=self.instance.Legal_Entity).values_list('property', flat=True).distinct()
 
+    def clean(self):
+        cleaned_data = super().clean()
+        legal_entity = cleaned_data.get("Legal_Entity")
+        property = cleaned_data.get("property")
+        camera_name = cleaned_data.get("Camera_Name")
+
+        if Post.objects.filter(Legal_Entity=legal_entity, property=property, Camera_Name=camera_name).exists():
+            raise ValidationError("A camera with these values already exists")
+
+        return cleaned_data
+
 
 class PostForm0(forms.ModelForm):
+    confirm_video_recorded = models.BooleanField(default=False)
     class Meta:
         model = Post
         fields = ['town', 'postcode', 'phone_number', 'confirm_video_recorded', 'door_photo', 'aspect_of_door', 'light_meter_reading_inside',

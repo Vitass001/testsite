@@ -22,6 +22,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_Legal_Entity' %}">Legal Entity</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{% url 'create_property' %}">Create property</a>
@@ -58,9 +61,6 @@
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
 
-{#<h2>Legal Entity: <span style="color: blue">{{ post.Legal_Entity }}</span></h2>#}
-{#<h2>Property : <span style="color: blue">{{ post.property }}</span></h2>#}
-{#<h2>Camera position: <span style="color: blue">{{ post.Camera_Name }}</span></h2>#}
 
 <table style="font-size:24px;">
   <tr>
@@ -170,7 +170,16 @@
   </tr>
   <tr>
     <td style="font-weight:bold;">Photo of door from camera position:</td>
-    <td><span style="color: blue">{{ post.door_photo }}</span></td>
+    <td><span>
+      {% if post.door_photo %}
+                <button onclick="openInNewTab('{{ post.door_photo.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
   </tr>
     <tr>
     <td><hr></td>
@@ -194,7 +203,17 @@
   </tr>
   <tr>
     <td style="font-weight:bold;">Internet speed test (router or customer network):</td>
-    <td><span style="color: blue">{{ post.internet_speed_test }}</span></td>
+
+      <td><span>
+      {% if post.internet_speed_test %}
+                <button onclick="openInNewTab('{{ post.internet_speed_test.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
   </tr>
 </table>
 
@@ -334,6 +353,7 @@
   <tr>
     <td style="font-weight: bold;">Camera Settings all optimised:</td>
     <td><span style="color: blue">{{ post.settings_optimized }}</span></td>
+
   </tr>
   <tr>
     <td><hr></td>
@@ -341,7 +361,17 @@
   </tr>
   <tr>
     <td style="font-weight: bold;">Screenshot of RMFS Face size at door from SAFR:</td>
-    <td><span style="color: blue">{{ post.face_size_screenshot }}</span></td>
+
+      <td><span>
+      {% if post.face_size_screenshot %}
+                <button onclick="openInNewTab('{{ post.face_size_screenshot.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
   </tr>
   <tr>
     <td><hr></td>
@@ -389,7 +419,17 @@
             <table style="font-size: 24px;">
   <tr>
     <td style="font-weight: bold;">Door sticker photo:</td>
-    <td><span style="color: blue">{{ post.door_sticker_photo }}</span></td>
+
+      <td><span>
+      {% if post.door_sticker_photo %}
+                <button onclick="openInNewTab('{{ post.door_sticker_photo.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
   </tr>
   <tr>
     <td><hr></td>
@@ -421,11 +461,20 @@
   </tr>
   <tr>
     <td style="font-weight: bold;">Leave FW install crib sheet (with install positions / kit information):</td>
-    <td><span style="color: blue">{{ post.leave_fw_install_crib_sheet }}</span></td>
+    <td><span>
+      {% if post.leave_fw_install_crib_sheet_photo %}
+                <button onclick="openInNewTab('{{ post.leave_fw_install_crib_sheet_photo.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+    </span></td>
   </tr>
 </table>
 
-
+<h2></h2>
 
             <div class="d-grid gap-2">
             <a class="btn btn-primary" href="edit3/" role="button">Edit</a>

@@ -22,6 +22,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_Legal_Entity' %}">Legal Entity</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{% url 'create_property' %}">Create property</a>
@@ -47,44 +50,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-{#<center>#}
-{#<h1>Create Camera</h1>#}
-{##}
-{#<form method="post" enctype="multipart/form-data" >#}
-{#    {% csrf_token %}#}
-{#    {{ form.as_p }}#}
-{##}
-{#    <button type="submit">Upload</button>#}
-{##}
-{#</form>#}
-{##}
-{#</center>#}
-{##}
-{##}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <center>
 <div class="container">
   <h1>Create Camera</h1>
@@ -98,6 +63,8 @@
   </form>
 </div>
 </center>
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
