@@ -22,7 +22,7 @@ class Post(models.Model):
     postcode = models.CharField(max_length=500, )
     phone_number = models.CharField(max_length=500, )
     # Test_admin = models.CharField(max_length=500, unique=True)
-    confirm_video_recorded = models.BooleanField()
+    confirm_video_recorded = models.BooleanField(default=False)
 
     door_photo = models.ImageField(upload_to='images/', blank=True, null=True)
     aspect_of_door = models.CharField(blank=True, null=True, max_length=500)
@@ -64,9 +64,9 @@ class Post(models.Model):
     # Camera Setup:
 
     Generated_Camera_name = models.CharField(max_length=50, blank=True, null=True)
-    firmware_up_to_date = models.BooleanField()
-    sd_card_installed = models.BooleanField()
-    settings_optimized = models.BooleanField()
+    firmware_up_to_date = models.BooleanField(default=False)
+    sd_card_installed = models.BooleanField(default=False)
+    settings_optimized = models.BooleanField(default=False)
     face_size_screenshot = models.ImageField(upload_to='images/', blank=True, null=True)
     min_face_size = models.IntegerField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
@@ -74,8 +74,8 @@ class Post(models.Model):
     # Site Audit information:
 
     door_sticker_photo = models.ImageField(upload_to='images/', blank=True, null=True)
-    set_up_pc_and_app = models.BooleanField()
-    train_staff = models.BooleanField()
+    set_up_pc_and_app = models.BooleanField(default=False)
+    train_staff = models.BooleanField(default=False)
     customer_sme_name = models.CharField(max_length=100, blank=True, null=True)
     leave_fw_install_crib_sheet_photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
