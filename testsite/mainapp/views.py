@@ -33,30 +33,6 @@ from .models import Post, Property
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -142,7 +118,7 @@ def create_property(request):
     return render(request, 'mainapp/create_property.html', {'form': form }, )
 
 
-
+@login_required
 def create_Legal_Entity(request):
     if request.method == 'POST':
         form = LegalForm(request.POST or None, request.FILES or None)
@@ -155,7 +131,6 @@ def create_Legal_Entity(request):
     return render(request, 'mainapp/create_Legal_Entity.html', {'form': form }, )
 
 
-
 @login_required
 def property_list_ajax(request):
     Legal_Entity = request.GET.get('Legal_Entity')
@@ -164,76 +139,10 @@ def property_list_ajax(request):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from django.shortcuts import render, redirect
-# from .forms import PropertyForm, PostForm
-#
-# def create_property(request):
-#     if request.method == 'POST':
-#         form = PropertyForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(all_posts)
-#     else:
-#         form = PropertyForm()
-#     return render(request, 'mainapp/create_property.html', {'form': form})
-#
-# def post_create(request):
-#     if request.method == 'POST':
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(all_posts)
-#     else:
-#         form = PostForm()
-#     return render(request, 'mainapp/create_property.html', {'form': form})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @login_required
 def calculator(request):
 
     return render(request, 'mainapp/calculator.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @login_required
@@ -250,8 +159,6 @@ def post_detail(request, Legal_Entity, Camera_Name, property):
     #     result3 = (numb3 / result2) / 6.25
     # oll_result = {'result1': result1, 'result2' : result2,'result3': result3 }
     return render(request, 'mainapp/post_detail.html', {'post': post,})
-
-
 
 
 
@@ -458,12 +365,6 @@ def post_edit10(request, Legal_Entity, Camera_Name, property):
     else:
         form = PostForm10(instance=post)
     return render(request, 'mainapp/post_edit10.html', {'form': form})
-
-
-
-
-
-
 
 
 @login_required

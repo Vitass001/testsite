@@ -61,6 +61,10 @@ class Post(models.Model):
     phone_serial = models.CharField(max_length=50, blank=True, null=True)
     phone_sim = models.CharField(max_length=50, blank=True, null=True)
 
+    Photo_of_camera = models.ImageField(upload_to='images/', blank=True, null=True)
+    Photo_of_router = models.ImageField(upload_to='images/', blank=True, null=True)
+    Photo_of_switch = models.ImageField(upload_to='images/', blank=True, null=True)
+
     # Camera Setup:
 
     Generated_Camera_name = models.CharField(max_length=50, blank=True, null=True)
@@ -294,14 +298,14 @@ from django.forms.models import model_to_dict
 
 @receiver(post_save, sender=Post)
 def update_post(sender, instance, created, **kwargs):
-    if created:  # перевіряємо, чи був створений новий об'єкт Post
+    if created:  
         try:
-            # знаходимо об'єкт Property, який відповідає вибраним значенням в PostForm
+
             property_obj = Property.objects.get(
                 Legal_Entity=instance.Legal_Entity,
                 property=instance.property
             )
-            # отримуємо словник зі значеннями полів об'єкта Property та оновлюємо поля об'єкта Post
+
             post_dict = model_to_dict(property_obj, fields=['town', 'postcode', 'phone_number'])
             for key, value in post_dict.items():
                 setattr(instance, key, value)

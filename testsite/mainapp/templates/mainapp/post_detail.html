@@ -300,6 +300,57 @@
     <td style="font-weight: bold;">Phone SIM:</td>
     <td><span style="color: blue">{{ post.phone_sim }}</span></td>
   </tr>
+  <td><hr></td>
+    <td><hr></td>
+  <tr>
+    <td style="font-weight: bold;">Photo of camera:</td>
+
+      <td><span>
+      {% if post.Photo_of_camera %}
+                <button onclick="openInNewTab('{{ post.Photo_of_camera.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
+  </tr>
+  <td><hr></td>
+    <td><hr></td>
+  <tr>
+    <td style="font-weight: bold;">Photo of router:</td>
+
+      <td><span>
+      {% if post.Photo_of_router %}
+                <button onclick="openInNewTab('{{ post.Photo_of_router.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
+  </tr>
+  <td><hr></td>
+    <td><hr></td>
+  <tr>
+    <td style="font-weight: bold;">Photo of switch:</td>
+
+      <td><span>
+      {% if post.Photo_of_switch %}
+                <button onclick="openInNewTab('{{ post.Photo_of_switch.url }}',)">Open Photo</button>
+                <script>
+                    function openInNewTab(url) {
+                    window.open(url, '_blank');
+                }
+                </script>
+      {% endif %}
+  </span></td>
+  </tr>
+
+
+
 </table>
 
 <tr>

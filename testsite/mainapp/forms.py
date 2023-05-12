@@ -78,7 +78,8 @@ class PostForm0(forms.ModelForm):
 class PostForm1(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['camera_serial', 'face_box_id', 'kasa_login_id', 'switch_make_and_model', 'router_serial', 'phone_models', 'phone_serial', 'phone_sim']
+        fields = ['camera_serial', 'face_box_id', 'kasa_login_id', 'switch_make_and_model', 'router_serial', 'phone_models', 'phone_serial', 'phone_sim',
+                  'Photo_of_camera', 'Photo_of_router', 'Photo_of_switch']
         # fields = ['Installer_Company', 'Installer_email', 'Install_date', 'Door_entrance_width',
         #         'Distance_from_door', 'Height', 'Angle_to_face_Degrees', 'Pixels_per_face',
         #         'Video_on_teams', 'Facebox_id', 'Kasa_login', 'Router_Serial_No',
