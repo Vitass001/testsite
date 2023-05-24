@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import *
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -22,6 +22,8 @@ from django.core.files.storage import FileSystemStorage
 # from django_filters.views import FilterView
 # from .models import MyModel
 # from .filters import MyModelFilter
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 
 
 from django.db.models import Q
@@ -29,7 +31,8 @@ from django.shortcuts import render
 from .models import Post, Property
 
 
-
+def user_has_admin_login(user):
+    return user.username == "admin"
 
 
 
@@ -160,7 +163,12 @@ def post_detail(request, Legal_Entity, Camera_Name, property):
     # oll_result = {'result1': result1, 'result2' : result2,'result3': result3 }
     return render(request, 'mainapp/post_detail.html', {'post': post,})
 
+@login_required
+def post_detail_old(request, Legal_Entity, Camera_Name, property):
 
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property  )
+
+    return render(request, 'mainapp/post_detail_old.html', {'post': post,})
 
 @login_required
 def all_posts(request):
@@ -207,7 +215,9 @@ def search(request):
     }
     return render(request, 'mainapp/all_posts.html', context)
 
+
 @login_required
+@user_passes_test(user_has_admin_login)
 def post_edit(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
@@ -221,6 +231,8 @@ def post_edit(request, Legal_Entity, Camera_Name, property):
     else:
         form = PostForm(instance=post)
     return render(request, 'mainapp/post_edit.html', {'form': form})
+
+
 @login_required
 def post_edit0(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
@@ -288,83 +300,145 @@ def post_edit4(request, Legal_Entity, Camera_Name, property):
         form = PostForm4(instance=post)
     return render(request, 'mainapp/post_edit4.html', {'form': form})
 
+
+
 @login_required
-def post_edit5(request, Legal_Entity, Camera_Name, property):
+def post_edit_Settings0(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm5(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings0(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm5(instance=post)
-    return render(request, 'mainapp/post_edit5.html', {'form': form})
+        form = PostForm_Settings0(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
 
-
-def post_edit6(request, Legal_Entity, Camera_Name, property):
+def post_edit_Settings1(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm6(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings1(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+
+            post.save()
+            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+    else:
+        form = PostForm_Settings1(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
+
+def post_edit_Settings2(request, Legal_Entity, Camera_Name, property):
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
+    if request.method == "POST":
+        form = PostForm_Settings2(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+
+            post.save()
+            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+    else:
+        form = PostForm_Settings2(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
+
+def post_edit_Settings3(request, Legal_Entity, Camera_Name, property):
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
+    if request.method == "POST":
+        form = PostForm_Settings3(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+
+            post.save()
+            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+    else:
+        form = PostForm_Settings3(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
+
+def post_edit_Settings4(request, Legal_Entity, Camera_Name, property):
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
+    if request.method == "POST":
+        form = PostForm_Settings4(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+
+            post.save()
+            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+    else:
+        form = PostForm_Settings4(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
+
+
+def post_edit_Settings5(request, Legal_Entity, Camera_Name, property):
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
+    if request.method == "POST":
+        form = PostForm_Settings5(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail',Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm6(instance=post)
-    return render(request, 'mainapp/post_edit6.html', {'form': form})
+        form = PostForm_Settings5(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 
-def post_edit7(request, Legal_Entity, Camera_Name, property):
+def post_edit_Settings6(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm7(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings6(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm7(instance=post)
-    return render(request, 'mainapp/post_edit7.html', {'form': form})
+        form = PostForm_Settings6(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 
-def post_edit8(request,Legal_Entity, Camera_Name, property):
+def post_edit_Settings7(request,Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm8(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings7(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm8(instance=post)
-    return render(request, 'mainapp/post_edit8.html', {'form': form})
+        form = PostForm_Settings7(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 
-def post_edit9(request, Legal_Entity, Camera_Name, property):
+def post_edit_Settings8(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm9(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings8(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm9(instance=post)
-    return render(request, 'mainapp/post_edit9.html', {'form': form})
+        form = PostForm_Settings8(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 
-def post_edit10(request, Legal_Entity, Camera_Name, property):
+def post_edit_Settings9(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm10(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings9(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm10(instance=post)
-    return render(request, 'mainapp/post_edit10.html', {'form': form})
+        form = PostForm_Settings9(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
+
+def post_edit_Settings10(request, Legal_Entity, Camera_Name, property):
+    post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
+    if request.method == "POST":
+        form = PostForm_Settings10(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+
+            post.save()
+            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+    else:
+        form = PostForm_Settings10(instance=post)
+    return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 
 @login_required

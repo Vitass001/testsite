@@ -85,13 +85,16 @@
   </tr>
 
 </table>
+      {% if user.is_authenticated and user.username == "admin" %}
    <tr>
-
     <td><hr></td>
   </tr>
+{% endif %}
+          <div class="d-grid gap-2">
+                {% if user.is_authenticated and user.username == "admin" %}
+                 <a class="btn btn-primary" href="edit/" role="button">Edit</a>
+                {% endif %}
 
-            <div class="d-grid gap-2">
-            <a class="btn btn-primary" href="edit/" role="button">Edit</a>
           </div>
 
       </div>

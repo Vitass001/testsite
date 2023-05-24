@@ -6,8 +6,38 @@
 <link rel="stylesheet" href="{% static 'mainapp/css/main.css' %}">
 {% block navbar %}
 
+<!--<header>-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--&lt;!&ndash;      <a class="navbar-brand" href="#">Моя сторінка</a>&ndash;&gt;-->
+<!--      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--      </button>-->
+<!--      <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--        <ul class="navbar-nav">-->
+<!--          <li class="nav-item active">-->
+<!--            <a class="nav-link" href="/">Home </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'all_posts' %}">Posts</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'post_create' %}">Post Create</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'calculator' %}">Calculator</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'logout' %}">Logout</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--		</ul>-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
 
-{% endblock %}
+
+
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -19,9 +49,6 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'all_posts' %}">Camera</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'create_Legal_Entity' %}">Legal Entity</a>
         </li>
 
         <li class="nav-item">
@@ -47,43 +74,18 @@
 </nav>
 
 
-<h4></h4>
-
-<form class="d-flex" role="search", action="{% url 'search' %}",>
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
 
 
 
 
 
+{% endblock %}
 
-
-
-
-
-
-
-<div class="card" >
-
-    {% for post in posts %}
-
-  <div class="card-body" >
-    <h5 class="card-title">{{post.Legal_Entity}}-{{post.property}}-{{post.Camera_Name}}</h5>
-      <p>{{ post.pub_date }}</p>
-    <a href="{% url 'post_detail' Legal_Entity=post.Legal_Entity property=post.property Camera_Name=post.Camera_Name %}" class="btn btn-primary">Open</a>
-    <a href="{% url 'post_detail_old' Legal_Entity=post.Legal_Entity property=post.property Camera_Name=post.Camera_Name %}" class="btn btn-primary">Open old</a>
-  </div>
-    {% endfor %}
-</div>
-
-
-
-
-
-
-
-
-
-
+<center>
+<h1>Edit </h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save changes</button>
+  </form>
+</center>

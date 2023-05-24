@@ -17,7 +17,10 @@ class Post(models.Model):
     property = models.CharField(max_length=500,)
     Camera_Name = models.CharField(max_length=500,)
     Property_Name = models.CharField(max_length=500,blank=True, null=True )
-    # Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
+
+    Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
+    Company = models.CharField(max_length=500,blank=True, null=True )
+
     town = models.CharField(max_length=500, )
     postcode = models.CharField(max_length=500, )
     phone_number = models.CharField(max_length=500, )
