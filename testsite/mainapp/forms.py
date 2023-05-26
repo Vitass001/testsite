@@ -114,13 +114,13 @@ class PostForm4(forms.ModelForm):
         model = Post
         fields = ['Camera_Position_Image', 'Facebox_Switch_location_image', 'Router_location_image', 'Image_of_signage_in_doorway_image'
                    ]
-        widgets = {
-            'Camera_Position_Image': forms.FileInput(attrs={'multiple': True}),
-            ' Facebox_Switch_location_image': forms.FileInput(attrs={'multiple': True}),
-
-            'Router_location_image': forms.FileInput(attrs={'multiple': True}),
-            'Image_of_signage_in_doorway_image': forms.FileInput(attrs={'multiple': True}),
-        }
+        # widgets = {
+        #     'Camera_Position_Image': forms.FileInput(attrs={'multiple': True}),
+        #     ' Facebox_Switch_location_image': forms.FileInput(attrs={'multiple': True}),
+        #
+        #     'Router_location_image': forms.FileInput(attrs={'multiple': True}),
+        #     'Image_of_signage_in_doorway_image': forms.FileInput(attrs={'multiple': True}),
+        # }
 
 
 
