@@ -184,13 +184,13 @@ class PostForm_Settings4(forms.ModelForm):
         model = Post
         fields = ['Camera_Position_Image', 'Facebox_Switch_location_image', 'Router_location_image', 'Image_of_signage_in_doorway_image'
                    ]
-        widgets = {
-            'Camera_Position_Image': forms.ClearableFileInput(attrs={'multiple': True}),
-            ' Facebox_Switch_location_image': forms.ClearableFileInput(attrs={'multiple': True}),
-
-            'Router_location_image': forms.ClearableFileInput(attrs={'multiple': True}),
-            'Image_of_signage_in_doorway_image': forms.ClearableFileInput(attrs={'multiple': True}),
-        }
+        # widgets = {
+        #     'Camera_Position_Image': forms.ClearableFileInput(attrs={'multiple': True}),
+        #     ' Facebox_Switch_location_image': forms.ClearableFileInput(attrs={'multiple': True}),
+        #
+        #     'Router_location_image': forms.ClearableFileInput(attrs={'multiple': True}),
+        #     'Image_of_signage_in_doorway_image': forms.ClearableFileInput(attrs={'multiple': True}),
+        # }
 
 class PostForm_Settings5(forms.ModelForm):
     class Meta:
