@@ -18,7 +18,7 @@ class Post(models.Model):
     Camera_Name = models.CharField(max_length=500,)
     Property_Name = models.CharField(max_length=500,blank=True, null=True )
 
-    Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
+    # Town_Postcode = models.CharField(max_length=500,blank=True, null=True )
     Company = models.CharField(max_length=500,blank=True, null=True )
 
     town = models.CharField(max_length=500, )
@@ -90,15 +90,15 @@ class Post(models.Model):
 
 
     # Install on site
-    Installer_Company = models.CharField(max_length=500,blank=True, null=True )
-    Installer_email = models.CharField(max_length=500,blank=True, null=True )
-    Install_date = models.CharField(max_length=500, blank=True, null=True)
+    # Installer_Company = models.CharField(max_length=500,blank=True, null=True )
+    # Installer_email = models.CharField(max_length=500,blank=True, null=True )
+    # Install_date = models.CharField(max_length=500, blank=True, null=True)
     Door_entrance_width = models.CharField(max_length=500, blank=True, null=True)
     Distance_from_door= models.CharField(max_length=500, blank=True, null=True)
     Height = models.CharField(max_length=500, blank=True, null=True)
     Angle_to_face_Degrees = models.CharField(max_length=500, blank=True, null=True)
     Pixels_per_face = models.CharField(max_length=500, blank=True, null=True)
-    Video_on_teams = models.CharField(max_length=500, blank=True, null=True)
+    # Video_on_teams = models.CharField(max_length=500, blank=True, null=True)
     Facebox_id = models.CharField(max_length=500,blank=True, null=True )
     Kasa_login = models.CharField(max_length=500,blank=True, null=True )
     Router_Serial_No = models.CharField(max_length=500, blank=True, null=True)
@@ -109,29 +109,34 @@ class Post(models.Model):
 
     Test_camera_set = models.CharField(max_length=500, blank=True, null=True)
 
+    # new
+    Lumen_or_candle = models.CharField(max_length=500, blank=True, null=True)
+    Aspect = models.CharField(max_length=500, blank=True, null=True)
+    Door_type = models.CharField(max_length=500, blank=True, null=True)
+    Describe_aspect = models.CharField(max_length=500, blank=True, null=True)
+
 
 #    INSTALER ON SITE
-    Vivotek_cam_updated = models.CharField(max_length=500, blank=True, null=True)
-    Lumen_or_candle = models.CharField(max_length=500, blank=True, null=True)
-    Auto_Camera_Name = models.CharField(max_length=500,blank=True, null=True )
-    Input_Camera_Name_Into_Camera = models.CharField(max_length=500, blank=True, null=True)
-    Aspect = models.CharField(max_length=500,blank=True, null=True )
-    Door_type = models.CharField(max_length=500, blank=True, null=True)
-    Describe_aspect = models.CharField(max_length=500,blank=True, null=True )
+#     Vivotek_cam_updated = models.CharField(max_length=500, blank=True, null=True)
+
+    # Auto_Camera_Name = models.CharField(max_length=500,blank=True, null=True )
+    # Input_Camera_Name_Into_Camera = models.CharField(max_length=500, blank=True, null=True)
+
+
     Camera_time = models.CharField(max_length=500,blank=True, null=True )
     Bitrate = models.CharField(max_length=500,blank=True, null=True )
     Video_quality = models.CharField(max_length=500,blank=True, null=True )
-    Zoom_to_door_and_preset= models.CharField(max_length=500, blank=True, null=True)
+    # Zoom_to_door_and_preset= models.CharField(max_length=500, blank=True, null=True)
 
     #Final checks
-    Horiz_mfs_from_detection = models.CharField(max_length=500, blank=True, null=True)
-    Horiz_mfs_from_safr = models.CharField(max_length=500, blank=True, null=True)
-    Are_faces_detected = models.CharField(max_length=500, blank=True, null=True)
-    Are_alerts_working = models.CharField(max_length=500, blank=True, null=True)
-    Name_of_store_manager = models.CharField(max_length=500, blank=True, null=True)
-    Is_web_login = models.CharField(max_length=500, blank=True, null=True)
+    # Horiz_mfs_from_detection = models.CharField(max_length=500, blank=True, null=True)
+    # Horiz_mfs_from_safr = models.CharField(max_length=500, blank=True, null=True)
+    # Are_faces_detected = models.CharField(max_length=500, blank=True, null=True)
+    # Are_alerts_working = models.CharField(max_length=500, blank=True, null=True)
+    # Name_of_store_manager = models.CharField(max_length=500, blank=True, null=True)
+    # Is_web_login = models.CharField(max_length=500, blank=True, null=True)
     User_login_app = models.CharField(max_length=500, blank=True, null=True)
-    User_trained = models.CharField(max_length=500, blank=True, null=True)
+    # User_trained = models.CharField(max_length=500, blank=True, null=True)
     Name_of_fw_user = models.CharField(max_length=500, blank=True, null=True)
 
 
@@ -147,15 +152,15 @@ class Post(models.Model):
 
 
 
-    #Photos
-    Camera_Position_Image = models.ImageField(upload_to='images/',
-                                              null=True, blank=True,)
-    Facebox_Switch_location_image = models.ImageField(upload_to='images/',
-                               null=True, blank=True,)
-    Router_location_image = models.ImageField(upload_to='images/',
-                               null=True, blank=True,)
-    Image_of_signage_in_doorway_image = models.ImageField(upload_to='images/',
-                               null=True, blank=True,)
+    # Photos
+    # Camera_Position_Image = models.ImageField(upload_to='images/',
+    #                                           null=True, blank=True,)
+    # Facebox_Switch_location_image = models.ImageField(upload_to='images/',
+    #                            null=True, blank=True,)
+    # Router_location_image = models.ImageField(upload_to='images/',
+    #                            null=True, blank=True,)
+    # Image_of_signage_in_doorway_image = models.ImageField(upload_to='images/',
+    #                            null=True, blank=True,)
 
     # 'mainapp/static/mainapp/images/'
     #Day param
@@ -205,20 +210,20 @@ class Post(models.Model):
     Wdr_pro_one = models.CharField(max_length=500, blank=True, null=True)
     wdr_level_one = models.CharField(max_length=500, blank=True, null=True)
 
-    Name_of_profile_two = models.CharField(max_length=500, blank=True, null=True)
-    Time_profile_two = models.CharField(max_length=500, blank=True, null=True)
-    White_balance_two = models.CharField(max_length=500, blank=True, null=True)
-    Brightness_two = models.CharField(max_length=500, blank=True, null=True)
-    Saturation_two = models.CharField(max_length=500, blank=True, null=True)
-    Sharpness_two = models.CharField(max_length=500, blank=True, null=True)
-    Digital_noise_two = models.CharField(max_length=500, blank=True, null=True)
-    Exposure_level_two = models.CharField(max_length=500, blank=True, null=True)
-    Exposure_mode_two = models.CharField(max_length=500, blank=True, null=True)
-    Iris_two = models.CharField(max_length=500, blank=True, null=True)
-    Exposure_time_two = models.CharField(max_length=500, blank=True, null=True)
-    Exposure_gain_two = models.CharField(max_length=500, blank=True, null=True)
-    Wdr_pro_two = models.CharField(max_length=500, blank=True, null=True)
-    wdr_level_two = models.CharField(max_length=500, blank=True, null=True)
+    # Name_of_profile_two = models.CharField(max_length=500, blank=True, null=True)
+    # Time_profile_two = models.CharField(max_length=500, blank=True, null=True)
+    # White_balance_two = models.CharField(max_length=500, blank=True, null=True)
+    # Brightness_two = models.CharField(max_length=500, blank=True, null=True)
+    # Saturation_two = models.CharField(max_length=500, blank=True, null=True)
+    # Sharpness_two = models.CharField(max_length=500, blank=True, null=True)
+    # Digital_noise_two = models.CharField(max_length=500, blank=True, null=True)
+    # Exposure_level_two = models.CharField(max_length=500, blank=True, null=True)
+    # Exposure_mode_two = models.CharField(max_length=500, blank=True, null=True)
+    # Iris_two = models.CharField(max_length=500, blank=True, null=True)
+    # Exposure_time_two = models.CharField(max_length=500, blank=True, null=True)
+    # Exposure_gain_two = models.CharField(max_length=500, blank=True, null=True)
+    # Wdr_pro_two = models.CharField(max_length=500, blank=True, null=True)
+    # wdr_level_two = models.CharField(max_length=500, blank=True, null=True)
 
     field_for_notes = models.TextField(max_length=2000, blank=True, null=True)
 

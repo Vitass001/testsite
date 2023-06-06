@@ -393,13 +393,13 @@ def post_edit_Settings6(request, Legal_Entity, Camera_Name, property):
 def post_edit_Settings7(request,Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm_Settings7(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings8(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm_Settings7(instance=post)
+        form = PostForm_Settings8(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 
@@ -419,13 +419,13 @@ def post_edit_Settings8(request, Legal_Entity, Camera_Name, property):
 def post_edit_Settings9(request, Legal_Entity, Camera_Name, property):
     post = get_object_or_404(Post, Legal_Entity=Legal_Entity, Camera_Name=Camera_Name, property=property)
     if request.method == "POST":
-        form = PostForm_Settings9(request.POST, request.FILES, instance=post)
+        form = PostForm_Settings7(request.POST, request.FILES, instance=post)
         if form.is_valid():
 
             post.save()
             return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
-        form = PostForm_Settings9(instance=post)
+        form = PostForm_Settings7(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
 
 def post_edit_Settings10(request, Legal_Entity, Camera_Name, property):
