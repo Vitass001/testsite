@@ -31,6 +31,8 @@ urlpatterns = [
     path('detail/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/edit4/', post_edit4, name='post_edit4'),
     path('detail/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/delete/', post_delete, name='post_delete'),
 
+
+
     path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/settings0/', post_edit_Settings0, name='post_edit_Settings0'),
     path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/settings1/', post_edit_Settings1, name='post_edit_Settings1'),
     path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/settings2/', post_edit_Settings2, name='post_edit_Settings2'),
@@ -43,7 +45,7 @@ urlpatterns = [
     path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/settings9/', post_edit_Settings9, name='post_edit_Settings9'),
     path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/settings10/', post_edit_Settings10, name='post_edit_Settings10'),
 
-
+    path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/', post_detail_old, name='post_detail_old'),
     # path('detail_old/<str:Legal_Entity>-<str:property>-<str:Camera_Name>/delete/', post_delete, name='post_delete'),
     # path('<str:title>/delete1/', post_delete1, name='post_delete1'),
     # path('<str:title>/delete2/', post_delete2, name='post_delete2'),

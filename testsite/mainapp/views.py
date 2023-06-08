@@ -310,7 +310,7 @@ def post_edit_Settings0(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings0(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -322,7 +322,7 @@ def post_edit_Settings1(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings1(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -334,7 +334,7 @@ def post_edit_Settings2(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings2(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -346,7 +346,7 @@ def post_edit_Settings3(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings3(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -358,7 +358,7 @@ def post_edit_Settings4(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings4(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -371,7 +371,7 @@ def post_edit_Settings5(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail',Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old',Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings5(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -384,7 +384,7 @@ def post_edit_Settings6(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings6(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -397,7 +397,7 @@ def post_edit_Settings7(request,Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings8(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -410,7 +410,7 @@ def post_edit_Settings8(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings8(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -423,7 +423,7 @@ def post_edit_Settings9(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings7(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
@@ -435,7 +435,7 @@ def post_edit_Settings10(request, Legal_Entity, Camera_Name, property):
         if form.is_valid():
 
             post.save()
-            return redirect('post_detail', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
+            return redirect('post_detail_old', Legal_Entity=form.instance.Legal_Entity, property=form.instance.property, Camera_Name=form.instance.Camera_Name)
     else:
         form = PostForm_Settings10(instance=post)
     return render(request, 'mainapp/post_settings0.html', {'form': form})
